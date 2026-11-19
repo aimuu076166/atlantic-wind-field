@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-state="loading">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101821">
+  <meta name="description" content="A NOAA GFS 10-meter wind forecast viewer and WebGL 2 particle displacement check.">
+  <title>Atlantic Wind Field</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-head">
+      <div>
+        <p class="source-line">NOAA GFS <span aria-hidden="true">·</span> 10 m above ground</p>
+        <h1>Atlantic Wind Field</h1>
+      </div>
+      <div class="actions">
+        <button id="play" type="button" disabled>Pause</button>
+        <button id="export" class="primary" type="button" disabled>Export PNG</button>
+      </div>
+    </header>
+
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <div class="workspace">
+      <section class="card forecast" aria-labelledby="forecast-title">
+        <div class="card-head">
+          <h2 id="forecast-title">Western Atlantic</h2>
+          <div class="valid-time">
+            <span>Valid time</span>
+            <time id="valid">Loading…</time>
+          </div>
+        </div>
+
+        <div id="map" class="map" tabindex="0" aria-label="Wind map. Click a location or use arrow keys to move the point forecast.">
+          <canvas id="geography" aria-hidden="true"></canvas>
+          <canvas id="particles" aria-hidden="true"></canvas>
+          <div id="marker" class="marker" hidden aria-hidden="true"></div>
+          <div class="legend" aria-label="Wind speed legend, from 0 to 20 or more meters per second">
+            <span>Wind speed <span class="units">m/s</span></span>
+            <div class="ramp"></div>
+            <div class="legend-numbers"><span>0</span><span>10</span><span>20+</span></div>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-label">
+            <label for="lead">Forecast lead time</label>
+            <output id="lead-label" for="lead">+03 h</output>
+          </div>
+          <input id="lead" type="range" min="3" max="9" step="0.25" value="3" disabled>
+          <div class="ticks" aria-hidden="true"><span>+03 h</span><span>+06 h</span><span>+09 h</span></div>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-label="Forecast details">
+        <section class="card inspector" aria-labelledby="point-title">
+          <h2 id="point-title">Point forecast</h2>
+          <p class="coords" id="coords">—</p>
+          <div class="wind-reading">
+            <strong id="speed">—</strong><span>m/s</span>
+          </div>
+          <p id="direction" class="direction">—</p>
+          <p class="hint">Select a location on the map.</p>
+        </section>
+
+        <section class="card check" aria-labelledby="check-title">
+          <h2 id="check-title">Particle check</h2>
+          <p id="check-state" class="check-state" aria-live="polite">Initializing WebGL 2</p>
+          <dl class="measurements">
+            <div><dt>Expected east</dt><dd>600.0 m</dd></div>
+            <div><dt>Measured east</dt><dd id="measured-east">—</dd></div>
+            <div><dt>Measured north</dt><dd id="measured-north">—</dd></div>
+          </dl>
+          <p class="hint">10 m/s east wind over 60 simulated seconds. Tolerance ±1 m per axis.</p>
+          <button id="check-again" type="button" disabled>Run check</button>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="data-note">
+      <span id="run">GFS cycle loading…</span>
+      <a href="./data/manifest.json">Data manifest</a>
+      <a href="https://nomads.ncep.noaa.gov/gribfilter.php?ds=gfs_0p25">NOAA data</a>
+      <span class="coast-credit">Coastlines by Natural Earth</span>
+    </footer>
+  </main>
+</body>
+</html>

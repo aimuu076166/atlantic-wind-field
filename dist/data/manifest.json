@@ -1,0 +1,43 @@
+{
+  "source": "NOAA / NCEP GFS 0.25\u00b0",
+  "run": "2026-11-19T12:00:00+00:00",
+  "heightAboveGroundMeters": 10,
+  "grid": {
+    "west": -84,
+    "east": -48,
+    "south": 21,
+    "north": 49,
+    "dx": 0.25,
+    "dy": 0.25,
+    "width": 145,
+    "height": 113
+  },
+  "encoding": {
+    "format": "RG16I",
+    "layout": "interleaved little-endian signed U,V; south to north",
+    "scaleMetersPerSecond": 0.01
+  },
+  "frames": [
+    {
+      "hour": 3,
+      "valid": "2026-11-19T15:00:00+00:00",
+      "file": "wind-f003.i16le",
+      "grib2": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f003&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&subregion=&leftlon=276&rightlon=312&bottomlat=21&toplat=49&dir=%2Fgfs.20261119%2F12%2Fatmos",
+      "grib2Sha256": "b87960fe7fa20a8c1a3d31296c19fe309d2aa51dd02439369c59c8aea8ce50d9"
+    },
+    {
+      "hour": 6,
+      "valid": "2026-11-19T18:00:00+00:00",
+      "file": "wind-f006.i16le",
+      "grib2": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f006&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&subregion=&leftlon=276&rightlon=312&bottomlat=21&toplat=49&dir=%2Fgfs.20261119%2F12%2Fatmos",
+      "grib2Sha256": "4a80d0c25b438d39415df078737d46380c944ea8f9b41029e99281a8136d55ee"
+    },
+    {
+      "hour": 9,
+      "valid": "2026-11-19T21:00:00+00:00",
+      "file": "wind-f009.i16le",
+      "grib2": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f009&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&subregion=&leftlon=276&rightlon=312&bottomlat=21&toplat=49&dir=%2Fgfs.20261119%2F12%2Fatmos",
+      "grib2Sha256": "f3f193703c7823fe7821ac12036788d7d2e2a52033983a76db1ac483766a7c6b"
+    }
+  ]
+}
